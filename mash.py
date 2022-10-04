@@ -1,11 +1,9 @@
-from distutils.log import error
 from pydub import AudioSegment
 from pydub.playback import play
 
-sound = AudioSegment.from_wav("./audio/src/bongoz.wav")
+sound = AudioSegment.from_wav("./audio/src/speech.wav")
 
-bpm = 56
-slice_length = int(60000/bpm)
+slice_length = 200
 
 if len(sound) < slice_length:
     raise ValueError('file too short')
@@ -20,8 +18,8 @@ for index, slice in enumerate(slices):
 
     if index == 0:
         flippedslices += rev_slice
-    elif len(slice) >= 100:
-        flippedslices = flippedslices.append(rev_slice, crossfade=(100))
+    elif len(slice) >= 40:
+        flippedslices = flippedslices.append(rev_slice, crossfade=(50))
     else:
         flippedslices = flippedslices.append(rev_slice, crossfade=len(slice))
 
