@@ -1,0 +1,4 @@
+add reqs in readm- = ffmpeg etc
+tests w/ test audio
+verify file length, type
+parameterize bpm, file
